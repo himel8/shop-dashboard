@@ -1,38 +1,32 @@
-.App {
-  text-align: center;
+.merchant-box {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.secBorder {
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.04);
+  border: 1px solid #e5e5e5;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  color: red;
+  background-color: #fef7eb;
+  border: 1px solid #ee9826;
+  cursor: pointer;
+  border-radius: 5px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+input[type="checkbox"]:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00c";
+  font-size: 16px;
+  color: #ee9826;
+  display: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input[type="checkbox"]:checked:after {
+  display: block;
 }
