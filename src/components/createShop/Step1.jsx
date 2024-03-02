@@ -9,7 +9,9 @@ import fashion from "../../assets/images/cat-2.png";
 import food from "../../assets/images/cat-3.png";
 import health from "../../assets/images/cat-4.png";
 import CropImage from "./CropImage";
+import CustomInput from "./CustomInput";
 import CustomSocialInput from "./CustomSocialInput";
+import CustomTextarea from "./CustomTextarea";
 import FromTitle from "./FromTitle";
 import SelectOption from "./SelectOption";
 
@@ -117,33 +119,20 @@ const Step1 = ({ values, handleChange }) => {
               English
             </p>
           </div>
-          <div className="pt-8">
-            <label htmlFor="shop_name">Shop Name</label>
-            <input
-              id="shop_name"
-              type="text"
-              required={true}
-              name="shopName"
-              placeholder="Shop Name"
-              onChange={handleChange}
-              value={values.name}
-              className="w-full rounded-md bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 font-medium"
-            />
-          </div>
-          <div className="pt-8">
-            <label htmlFor="shop_description">Shop Description</label>
-            <textarea
-              id="shop_description"
-              type="text"
-              rows={6}
-              required={true}
-              name="shopName"
-              placeholder="Shop Description"
-              onChange={handleChange}
-              value={values.name}
-              className="rounded-md w-full bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 font-medium"
-            />
-          </div>
+          <CustomInput
+            label="Shop Name"
+            placeholder="Shop Name"
+            name="shopName"
+            values={values}
+            onChange={handleChange}
+          />
+          <CustomTextarea
+            label="Shop Description"
+            placeholder="Shop Description"
+            name="shopDesc"
+            values={values}
+            onChange={handleChange}
+          />
         </div>
         <div className="w-full">
           <div className="relative border rounded-md px-6 py-4 ">
@@ -190,19 +179,14 @@ const Step1 = ({ values, handleChange }) => {
 
       <FromTitle>Custom Shop Url</FromTitle>
       <div className="flex justify-between items-center gap-10 sm:gap-5 flex-col sm:flex-row">
-        <div className="pt-8 w-full">
-          <label htmlFor="shop_alias">Shop Alias</label>
-          <input
-            id="shop_alias"
-            type="text"
-            required={true}
-            name="shopName"
-            placeholder="Enter Shop Alias"
-            onChange={handleAliasChange}
-            value={values.name}
-            className="w-full rounded-md bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 font-medium"
-          />
-        </div>
+        <CustomInput
+          label="Shop Alias"
+          placeholder="Enter Shop Alias"
+          name="shopAlias"
+          values={values}
+          onChange={handleAliasChange}
+        />
+
         <div className="pt-8 w-full">
           <label>URL preview</label>
           <input

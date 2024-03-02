@@ -13,11 +13,16 @@ const steps = [Step1, Step2, Step3];
 const initialValues = {
   shopName: "",
   shopImage: null,
+  shopDesc: "",
   // Add other form fields here
 };
 
 const validationSchema = Yup.object().shape({
-  shopName: Yup.string().required("Shop name is required"),
+  shopName: Yup.string().required("This field is required"),
+  shopDesc: Yup.string().required("This field is required"),
+  shopAlias: Yup.string()
+    .required("Only alphanumeric characters are allowed")
+    .matches(/^[a-zA-Z0-9]+$/, "Only alphanumeric characters are allowed"),
   shopImage: Yup.mixed()
     .required("Image is required")
     .test("fileSize", "File size is too large", (value) => {

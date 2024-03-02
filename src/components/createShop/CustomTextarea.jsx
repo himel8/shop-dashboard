@@ -1,18 +1,19 @@
 import { ErrorMessage, Field } from "formik";
 import React from "react";
 
-const CustomInput = ({ label, onChange, values, placeholder, name }) => {
+const CustomTextarea = ({ label, onChange, values, placeholder, name }) => {
   return (
-    <div className="pt-8 w-full">
+    <div className="pt-8">
       <label>{label}</label>
       <Field
-        type="text"
+        as="textarea"
+        rows={6}
         required={true}
         name={name}
         placeholder={placeholder}
         onChange={onChange}
         value={values.name}
-        className="w-full rounded-md bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 font-medium"
+        className="rounded-md w-full bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 font-medium"
       />
       <ErrorMessage
         name={name}
@@ -23,4 +24,4 @@ const CustomInput = ({ label, onChange, values, placeholder, name }) => {
   );
 };
 
-export default CustomInput;
+export default CustomTextarea;
