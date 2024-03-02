@@ -4,7 +4,10 @@ import React from "react";
 const CustomTextarea = ({ label, onChange, values, placeholder, name }) => {
   return (
     <div className="pt-8">
-      <label>{label}</label>
+      <label>
+        {label}
+        <span className="text-red-500">*</span>
+      </label>
       <Field
         as="textarea"
         rows={6}

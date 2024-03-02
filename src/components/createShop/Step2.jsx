@@ -1,5 +1,7 @@
 import { Field } from "formik";
 import React, { useState } from "react";
+import { FaCheckCircle } from "react-icons/fa";
+import { FaCircleDot } from "react-icons/fa6";
 import CustomInput from "./CustomInput";
 import FromTitle from "./FromTitle";
 import SelectOption from "./SelectOption";
@@ -133,9 +135,14 @@ const Step2 = ({ values, handleChange }) => {
               workday === item.name
                 ? "bg-primary text-white"
                 : "bg-[#f6f6f6] text-[#434343]"
-            } py-4 px-20 rounded-md  text-lg font-medium cursor-pointer`}
+            } py-4 px-20 rounded-md  text-lg font-medium cursor-pointer flex items-center gap-2`}
             onClick={() => setWorkday(item.name)}
           >
+            {workday === item.name ? (
+              <FaCheckCircle className="text-2xl" />
+            ) : (
+              <FaCircleDot className="text-2xl" />
+            )}{" "}
             {item.name}
           </div>
         ))}
@@ -148,9 +155,9 @@ const Step2 = ({ values, handleChange }) => {
                 type="checkbox"
                 id="pickUp"
                 name={item}
-                className="mr-2 border-primary h-4 w-4 rounded"
+                className=" mr-2 border-primary h-4 w-4 rounded"
               />
-              <span className="w-full text-xl text-[#181f27] leading-[25px]">
+              <span className=" text-xl text-[#181f27] leading-[25px]">
                 {item}
               </span>
             </label>

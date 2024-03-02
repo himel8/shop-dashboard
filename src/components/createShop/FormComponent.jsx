@@ -20,6 +20,18 @@ const initialValues = {
 const validationSchema = Yup.object().shape({
   shopName: Yup.string().required("This field is required"),
   shopDesc: Yup.string().required("This field is required"),
+  country: Yup.string().required("This field is required"),
+  emirate: Yup.string().required("This field is required"),
+  area: Yup.string().required("This field is required"),
+  villaName: Yup.string().required("This field is required"),
+  addressDetail: Yup.string().required("This field is required"),
+  streetName: Yup.string().required("This field is required"),
+  villaNumber: Yup.string().required("This field is required"),
+  IBANNumber: Yup.string().required("This field is required"),
+  bankName: Yup.string().required("This field is required"),
+  branchName: Yup.string().required("This field is required"),
+  accountName: Yup.string().required("This field is required"),
+  swiftCode: Yup.string().required("This field is required"),
   shopAlias: Yup.string()
     .required("Only alphanumeric characters are allowed")
     .matches(/^[a-zA-Z0-9]+$/, "Only alphanumeric characters are allowed"),

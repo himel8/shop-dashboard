@@ -4,7 +4,10 @@ import React from "react";
 const SelectOption = ({ label, placeholder, listItem, name }) => {
   return (
     <div className="pt-8 w-full">
-      <label>{label}</label>
+      <label>
+        {label}
+        <span className="text-red-500">*</span>
+      </label>
       <Field
         as="select"
         name={name}
@@ -15,7 +18,11 @@ const SelectOption = ({ label, placeholder, listItem, name }) => {
           <option key={index} value={category.id} label={category.name} />
         ))}
       </Field>
-      <ErrorMessage name={name} component="div" />
+      <ErrorMessage
+        name={name}
+        component="div"
+        className="text-red-500 text-sm"
+      />
     </div>
   );
 };

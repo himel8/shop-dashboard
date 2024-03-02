@@ -4,7 +4,10 @@ import React from "react";
 const CustomInput = ({ label, onChange, values, placeholder, name }) => {
   return (
     <div className="pt-8 w-full">
-      <label>{label}</label>
+      <label>
+        {label}
+        <span className="text-red-500">*</span>
+      </label>
       <Field
         type="text"
         required={true}
