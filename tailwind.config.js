@@ -7,6 +7,9 @@ module.exports = {
         primary: "#ee9826",
         text: "#434343",
       },
+      backgroundImage: {
+        "hero-pattern": "url('./assets/images/bicycle.png')",
+      },
     },
   },
   plugins: [],

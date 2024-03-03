@@ -1,11 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
-import brownArrow from "../../assets/images/arrow_curved.png";
-import blackArrow from "../../assets/images/arrow_curved_black.png";
+import Breadcrumb from "../../utils/Breadcrumb";
+import PageTitle from "../../utils/PageTitle";
 import CustomInput from "../createShop/CustomInput";
 import SelectOption from "../createShop/SelectOption";
-import PageTitle from "./PageTitle";
 
 const discountList = [
   { id: 1, name: "Amount" },
@@ -15,12 +14,16 @@ const validationSchema = Yup.object().shape({
   discountName: Yup.string().required("This field is required"),
   discountType: Yup.number().required("This field is required"),
   discountValue: Yup.string().required("This field is required"),
+  fromDate: Yup.date().required("This field is required"),
+  toDate: Yup.date().required("This field is required"),
 });
 
 const initialValues = {
   discountName: "",
   discountType: 0,
   discountValue: "",
+  fromDate: "",
+  toDate: "",
 };
 
 const AddDiscount = () => {
@@ -30,13 +33,8 @@ const AddDiscount = () => {
   };
   return (
     <div className="w-[95%] mx-auto">
-      <div className="flex items-center gap-2 ">
-        <img src={blackArrow} alt="" />
-        <a href="#!">dashboard</a>
-        <img src={blackArrow} alt="" />
-        <p className="text-primary">add discount</p>
-        <img src={brownArrow} alt="" />
-      </div>
+      <Breadcrumb main="dashboard" page="add discount" />
+
       <PageTitle>Add discount</PageTitle>
       <Formik
         initialValues={initialValues}
@@ -86,8 +84,26 @@ const AddDiscount = () => {
                   className="text-red-500 text-sm"
                 />
               </div>
+              <div className="flex justify-between items-center gap-5">
+                <CustomInput
+                  label="From Date"
+                  placeholder="From Date"
+                  name="fromDate"
+                  values={values}
+                  onChange={handleChange}
+                  type="date"
+                />
+                <CustomInput
+                  label="To Date"
+                  placeholder="To Date"
+                  name="toDate"
+                  values={values}
+                  onChange={handleChange}
+                  type="date"
+                />
+              </div>
             </div>
-            <div className="pb-8 pt-4 flex justify-end">
+            <div className="pb-8 pt-4 flex justify-end mt-12">
               <button
                 type="submit"
                 className="bg-primary py-4 px-24 text-white rounded-md capitalize"
