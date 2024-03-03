@@ -1,21 +1,28 @@
 import { ErrorMessage, Field } from "formik";
 import React from "react";
 
-const CustomInput = ({ label, onChange, values, placeholder, name }) => {
+const CustomInput = ({
+  label,
+  onChange,
+  values,
+  placeholder,
+  name,
+  type = "text",
+}) => {
   return (
     <div className="pt-8 w-full">
-      <label>
+      <label className="font-medium">
         {label}
         <span className="text-red-500">*</span>
       </label>
       <Field
-        type="text"
+        type={type}
         required={true}
         name={name}
         placeholder={placeholder}
         onChange={onChange}
         value={values.name}
-        className="w-full rounded-md bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 font-medium"
+        className="w-full rounded-md bg-[#f6f6f6] py-2 px-3 outline-0 mt-2"
       />
       <ErrorMessage
         name={name}

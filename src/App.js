@@ -1,10 +1,10 @@
 import "./App.css";
-import CreateShop from "./pages/CreateShop";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <div>
-      <CreateShop />
+      <Dashboard />
     </div>
   );
 }
