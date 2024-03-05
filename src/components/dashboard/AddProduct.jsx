@@ -3,11 +3,12 @@ import React from "react";
 import * as Yup from "yup";
 import brownArrow from "../../assets/images/arrow_curved.png";
 import blackArrow from "../../assets/images/arrow_curved_black.png";
+import PageTitle from "../../utils/PageTitle";
 import CustomInput from "../createShop/CustomInput";
 import CustomTextarea from "../createShop/CustomTextarea";
 import FromTitle from "../createShop/FromTitle";
 import SelectOption from "../createShop/SelectOption";
-import PageTitle from "./PageTitle";
+
 const categoryList = [
   { id: 1, name: " Arts & Crafts" },
   { id: 2, name: " Fashion" },
@@ -68,7 +69,7 @@ export const AddProduct = () => {
   const handleChange = () => {};
 
   return (
-    <div className="w-[95%] mx-auto">
+    <div className="">
       <div className="flex items-center gap-2 ">
         <img src={blackArrow} alt="" />
         <a href="#!">dashboard</a>

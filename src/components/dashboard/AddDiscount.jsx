@@ -32,7 +32,7 @@ const AddDiscount = () => {
     setSubmitting(false);
   };
   return (
-    <div className="w-[95%] mx-auto">
+    <div>
       <Breadcrumb main="dashboard" page="add discount" />
 
       <PageTitle>Add discount</PageTitle>

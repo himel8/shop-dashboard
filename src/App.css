@@ -30,3 +30,48 @@ input[type="checkbox"]:after {
 input[type="checkbox"]:checked:after {
   display: block;
 }
+
+.profile input[type="checkbox"] {
+  appearance: none;
+  left: 0;
+  border-radius: 50%;
+}
+.profile input[type="checkbox"]:checked {
+  left: 50%;
+}
+.profile input[type="checkbox"]:checked .colorC {
+  background-color: #ee9826;
+}
+
+.product__card {
+  overflow: hidden;
+  min-height: 220px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.04);
+  margin-bottom: 11px;
+  position: relative;
+}
+
+.date__ranger input {
+  outline: 0;
+}
+.date__ranger input {
+  border: 1px solid rgb(156 163 175);
+}
+.date__ranger input:focus {
+  border: 0;
+}
+
+.dropdown-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.dropdown-list.open {
+  max-height: 150px;
+}
+.hover-link:hover {
+  color: #f4a523;
+}

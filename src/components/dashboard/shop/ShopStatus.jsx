@@ -47,7 +47,7 @@ const ShopStatus = () => {
   };
 
   return (
-    <div className="w-[95%] mx-auto">
+    <div>
       <Breadcrumb main="dashboard" page="shop status" />
 
       <PageTitle>Shop status</PageTitle>

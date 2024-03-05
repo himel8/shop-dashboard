@@ -1,16 +1,23 @@
 import { ErrorMessage, Field } from "formik";
 import React from "react";
 
-const CustomTextarea = ({ label, onChange, values, placeholder, name }) => {
+const CustomTextarea = ({
+  label,
+  onChange,
+  values,
+  placeholder,
+  name,
+  rows = 6,
+}) => {
   return (
-    <div className="pt-8">
+    <div className="pt-4">
       <label>
         {label}
         <span className="text-red-500">*</span>
       </label>
       <Field
         as="textarea"
-        rows={6}
+        rows={rows}
         required={true}
         name={name}
         placeholder={placeholder}
