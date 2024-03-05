@@ -7,8 +7,9 @@ import { GoGear, GoReport } from "react-icons/go";
 import { IoMdHome } from "react-icons/io";
 import { IoList } from "react-icons/io5";
 import { LuBadgePercent } from "react-icons/lu";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 import { Sidenav, initTE } from "tw-elements";
+import logo from "../assets/images/logo.svg";
 import AddDiscount from "../components/dashboard/AddDiscount";
 import { AddProduct } from "../components/dashboard/AddProduct";
 import MerchantDashboard from "../components/dashboard/MerchantDashboard";
@@ -25,7 +26,6 @@ import ShopStatus from "../components/dashboard/shop/ShopStatus";
 import CustomerServiceModal from "../utils/CustomerServiceModal";
 import Dropdown from "../utils/Dropdown";
 import TearmsModal from "../utils/TearmsModal";
-
 const sideNavMenu = [
   {
     name: "Dashboard",
@@ -82,7 +82,6 @@ const Dashboard = () => {
   const [isOverMode, setIsOverMode] = useState(false);
   const [customerServiceModal, setCustomerServiceModal] = useState(false);
   const [customerTermsModal, setCustomerTermsModal] = useState(false);
-
   const toggleDropdown = (index) => {
     setOpenDropdown((prev) => (prev === index ? null : index));
   };
@@ -161,7 +160,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex h-screen relative">
       <nav
         id="sidenav-2"
         className={`fixed left-0 top-0 z-[1035] h-screen w-60 -translate-x-full overflow-hidden bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800 ${
@@ -173,6 +172,11 @@ const Dashboard = () => {
         data-te-sidenav-content="#content"
       >
         <ul class="relative m-0 list-none px-[0.2rem]" data-te-sidenav-menu-ref>
+          <Link to="/">
+            <div className="w-full h-20 flex items-center justify-center border-b">
+              <img src={logo} alt="logo" className="w-40 h-20" />
+            </div>
+          </Link>
           {sideNavMenu.map((menuItem, index) => (
             <Dropdown
               key={index}
@@ -236,8 +240,8 @@ const Dashboard = () => {
       {/* Sidenav */}
 
       {/* Content Area */}
-      <div className="p-5 !pl-[260px] " id="content">
-        <div className="border-b">
+      <div className="flex flex-col flex-1 p-5 !pl-[260px] " id="content">
+        <div className="border-b fixed top-0 w-full h-20 bg-white flex items-center z-[9999]">
           <button
             id="contentToggle"
             className=""
@@ -250,21 +254,26 @@ const Dashboard = () => {
           </button>
         </div>
 
-        <Routes>
-          <Route path="/" element={<MerchantDashboard />} />
-          <Route path="/product/list" element={<ProductList />} />
-          <Route path="/product/add" element={<AddProduct />} />
-          <Route path="/order/list" element={<OrderList />} />
-          <Route path="/discount/add" element={<AddDiscount />} />
-          <Route path="/discount/list" element={<DiscountDetails />} />
-          <Route path="/shop/status" element={<ShopStatus />} />
-          <Route path="/shop/list" element={<ShopPreview />} />
-          <Route path="/inbox" element={<Message />} />
-          <Route path="/profile/edit" element={<EditProfile />} />
-          <Route path="/profile/change-password" element={<ChangePassword />} />
-          <Route path="/profile/change-number" element={<ChangeNumber />} />
-          <Route path="/reports/payment-list" element={<SalesReport />} />
-        </Routes>
+        <div className="mt-20">
+          <Routes>
+            <Route path="/" element={<MerchantDashboard />} />
+            <Route path="/product/list" element={<ProductList />} />
+            <Route path="/product/add" element={<AddProduct />} />
+            <Route path="/order/list" element={<OrderList />} />
+            <Route path="/discount/add" element={<AddDiscount />} />
+            <Route path="/discount/list" element={<DiscountDetails />} />
+            <Route path="/shop/status" element={<ShopStatus />} />
+            <Route path="/shop/list" element={<ShopPreview />} />
+            <Route path="/inbox" element={<Message />} />
+            <Route path="/profile/edit" element={<EditProfile />} />
+            <Route
+              path="/profile/change-password"
+              element={<ChangePassword />}
+            />
+            <Route path="/profile/change-number" element={<ChangeNumber />} />
+            <Route path="/reports/payment-list" element={<SalesReport />} />
+          </Routes>
+        </div>
       </div>
 
       {/* customer services modal */}
