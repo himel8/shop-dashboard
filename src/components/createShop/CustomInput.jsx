@@ -27,7 +27,7 @@ const CustomInput = ({
         readOnly={readonly}
         className={`w-full rounded-md bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 ${
           readonly ? "cursor-not-allowed" : ""
-        }`}
+        } `}
       />
       <ErrorMessage
         name={name}

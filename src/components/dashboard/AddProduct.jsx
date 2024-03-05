@@ -61,12 +61,14 @@ const initialValues = {
   productName: "",
 };
 
-export const AddProduct = () => {
+export const AddProduct = ({
+  customerServiceModal,
+  setCustomerServiceModal,
+}) => {
   const onSubmit = (values, { setSubmitting }) => {
     console.log("Form submitted with values:", values);
     setSubmitting(false);
   };
-  const handleChange = () => {};
 
   return (
     <div className="">
@@ -83,7 +85,7 @@ export const AddProduct = () => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {({ values, isSubmitting, isValidating }) => (
+        {({ values, handleChange, isSubmitting, isValidating }) => (
           <Form>
             <FromTitle>Select Product Category</FromTitle>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 ">
@@ -276,7 +278,10 @@ export const AddProduct = () => {
                 />
                 <span className="w-full text-base text-[#181f27] leading-[25px]">
                   I agree with the{" "}
-                  <span className=" text-primary cursor-pointer">
+                  <span
+                    className=" text-primary cursor-pointer"
+                    onClick={(e) => setCustomerServiceModal(true)}
+                  >
                     Terms & conditions
                   </span>{" "}
                   Of Akshaak

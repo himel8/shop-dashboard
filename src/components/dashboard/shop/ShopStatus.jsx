@@ -1,8 +1,10 @@
+import { Form, Formik } from "formik";
 import React, { useRef, useState } from "react";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as Yup from "yup";
 import facebook from "../../../assets/images/facebook_circle.svg";
 import instagram from "../../../assets/images/instagram_circle.svg";
 import twitter from "../../../assets/images/twitter_circle.svg";
@@ -10,8 +12,18 @@ import user from "../../../assets/images/user.jpg";
 import youtube from "../../../assets/images/youtube_circle.svg";
 import Breadcrumb from "../../../utils/Breadcrumb";
 import PageTitle from "../../../utils/PageTitle";
+import CustomInput from "../../createShop/CustomInput";
 import FromTitle from "../../createShop/FromTitle";
 
+const validationSchema = Yup.object().shape({
+  toDate: Yup.date().required("This field is required"),
+  fromDate: Yup.date().required("This field is required"),
+});
+
+const initialValues = {
+  fromDate: null,
+  toDate: null,
+};
 const socials = [
   { link: "", icon: facebook },
   { link: "", icon: youtube },
@@ -30,6 +42,8 @@ const day = [
 
 const ShopStatus = () => {
   const [rating, setRating] = useState(5);
+  const [radioOver, setRadioOver] = useState(1);
+  const [status, setStatus] = useState("open");
   const linkToCopy = "www.akshaak.com/foodcorner";
   const linkRef = useRef(null);
 
@@ -45,7 +59,10 @@ const ShopStatus = () => {
       toast.error("Failed to copy link");
     }
   };
-
+  const onSubmit = (values, { setSubmitting }) => {
+    console.log("Form submitted with values:", values);
+    setSubmitting(false);
+  };
   return (
     <div>
       <Breadcrumb main="dashboard" page="shop status" />
@@ -144,6 +161,136 @@ const ShopStatus = () => {
         </div>
       </div>
       <FromTitle>Change Shop Status</FromTitle>
+      <div className="flex gap-5 items-center py-4">
+        <div
+          className="cursor-pointer radio_button flex gap-1"
+          onClick={(e) => setStatus("open")}
+        >
+          <div
+            className={`${
+              status === "open" ? "click" : ""
+            } w-6 h-6 bg-[#fef7eb] rounded-full border border-primary`}
+          ></div>
+          <p className="text-lg text-[#434343] uppercase">Open A Shop</p>
+        </div>
+        <div
+          className="cursor-pointer radio_button flex gap-1"
+          onClick={(e) => setStatus("holidy")}
+        >
+          <div
+            className={`${
+              status === "holidy" ? "click" : ""
+            } w-6 h-6 bg-[#fef7eb] rounded-full border border-primary`}
+          ></div>
+          <p className="text-lg text-[#434343] uppercase">HOLIDAY</p>
+        </div>
+        <div
+          className="cursor-pointer radio_button flex gap-1"
+          onClick={(e) => setStatus("over")}
+        >
+          <div
+            className={`${
+              status === "over" ? "click" : ""
+            } w-6 h-6 bg-[#fef7eb] rounded-full border border-primary`}
+          ></div>
+          <p className="text-lg text-[#434343] uppercase">OVERLOADED</p>
+        </div>
+      </div>
+
+      {status === "holidy" && (
+        <div className="flex gap-3  py-4 flex-col">
+          <p className="text-sm text-[#9b9b9b]">
+            Please select the date range that you will not be available
+          </p>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+          >
+            {({ values, handleChange, isSubmitting, isValidating }) => (
+              <Form>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pb-4">
+                  <CustomInput
+                    label="From Date"
+                    placeholder="From Date"
+                    name="fromDate"
+                    values={values}
+                    onChange={handleChange}
+                    type="date"
+                  />
+                  <CustomInput
+                    label="To Date"
+                    placeholder="To Date"
+                    name="toDate"
+                    values={values}
+                    onChange={handleChange}
+                    type="date"
+                  />
+                </div>
+              </Form>
+            )}
+          </Formik>
+          <div
+            className="cursor-pointer radio_button flex gap-1"
+            onClick={(e) => setRadioOver(1)}
+          >
+            <div
+              className={`${
+                radioOver === 1 ? "clickR" : ""
+              } w-4 h-4 bg-[#fef7eb] rounded-full border border-primary`}
+            ></div>
+            <p className="text-sm text-[#181f27] ">
+              I will be able to accept orders (expect some delays)
+            </p>
+          </div>
+          <div
+            className="cursor-pointer radio_button flex gap-1"
+            onClick={(e) => setRadioOver(2)}
+          >
+            <div
+              className={`${
+                radioOver === 2 ? "clickR" : ""
+              } w-4 h-4 bg-[#fef7eb] rounded-full border border-primary`}
+            ></div>
+            <p className="text-sm text-[#181f27] ">
+              I will not be able to accept orders and check-out will be disabled
+              (This can affect your sales and customer experience)
+            </p>
+          </div>
+        </div>
+      )}
+
+      {status === "over" && (
+        <div className="flex gap-3  py-4 flex-col">
+          <div
+            className="cursor-pointer radio_button flex gap-1"
+            onClick={(e) => setRadioOver(1)}
+          >
+            <div
+              className={`${
+                radioOver === 1 ? "clickR" : ""
+              } w-4 h-4 bg-[#fef7eb] rounded-full border border-primary`}
+            ></div>
+            <p className="text-sm text-[#181f27] ">
+              I will be able to accept orders (expect some delays)
+            </p>
+          </div>
+          <div
+            className="cursor-pointer radio_button flex gap-1"
+            onClick={(e) => setRadioOver(2)}
+          >
+            <div
+              className={`${
+                radioOver === 2 ? "clickR" : ""
+              } w-4 h-4 bg-[#fef7eb] rounded-full border border-primary`}
+            ></div>
+            <p className="text-sm text-[#181f27] ">
+              I will not be able to accept orders and check-out will be disabled
+              (This can affect your sales and customer experience)
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className="pb-8 pt-4 flex justify-end mt-12">
         <button className="bg-primary py-4 px-24 text-white rounded-md capitalize">

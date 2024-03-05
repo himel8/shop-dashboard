@@ -241,7 +241,7 @@ const Dashboard = () => {
 
       {/* Content Area */}
       <div className="flex flex-col flex-1 p-5 !pl-[260px] " id="content">
-        <div className="border-b fixed top-0 w-full h-20 bg-white flex items-center z-[9999]">
+        <div className="border-b fixed top-0 w-full h-20 bg-white flex items-center z-[990]">
           <button
             id="contentToggle"
             className=""
@@ -258,7 +258,15 @@ const Dashboard = () => {
           <Routes>
             <Route path="/" element={<MerchantDashboard />} />
             <Route path="/product/list" element={<ProductList />} />
-            <Route path="/product/add" element={<AddProduct />} />
+            <Route
+              path="/product/add"
+              element={
+                <AddProduct
+                  customerServiceModal={customerTermsModal}
+                  setCustomerServiceModal={setCustomerTermsModal}
+                />
+              }
+            />
             <Route path="/order/list" element={<OrderList />} />
             <Route path="/discount/add" element={<AddDiscount />} />
             <Route path="/discount/list" element={<DiscountDetails />} />
