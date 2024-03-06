@@ -46,9 +46,6 @@ const returnPolicyList = [
 const fragileList = [{ id: 1, name: "No" }];
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, "Name must be at least 3 characters")
-    .required("Name is required"),
   productCategory: Yup.number().required("This field is required"),
   productName: Yup.string().required("This field is required"),
   productDesc: Yup.string().required("This field is required"),
@@ -56,9 +53,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  name: "",
   productCategory: 0,
   productName: "",
+  productDesc: "",
 };
 
 export const AddProduct = ({
@@ -154,22 +151,21 @@ export const AddProduct = ({
                     العربية
                   </p>
                 </div>
-                <div className="pt-8 flex flex-col">
+                <div className="pt-4 flex flex-col">
                   <label htmlFor="shop_name_A" className="text-right">
                     إسم المتجر
                   </label>
                   <input
                     id="shop_name_A"
                     type="text"
-                    required={true}
-                    name="shopName"
+                    name="shopAName"
                     placeholder="إسم المتجر"
                     onChange={handleChange}
                     value={values.name}
                     className="text-right w-full bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 font-medium rounded-md"
                   />
                 </div>
-                <div className="pt-8 flex flex-col">
+                <div className="pt-4 flex flex-col">
                   <label htmlFor="shop_description_A" className="text-right">
                     وصف المتجر
                   </label>
@@ -177,23 +173,21 @@ export const AddProduct = ({
                     id="shop_description_A"
                     type="text"
                     rows={6}
-                    required={true}
-                    name="shopName"
+                    name="shopADesc"
                     placeholder="وصف المتجر"
                     onChange={handleChange}
                     value={values.name}
                     className="text-right w-full bg-[#f6f6f6] py-2 px-3 outline-0 mt-2 font-medium rounded-md"
                   />
                 </div>
-                <div className="pt-8 flex flex-col">
+                <div className="pt-4 flex flex-col">
                   <label htmlFor="shop_tag" className="text-right">
                     الكلمات الدلالية للمنتج
                   </label>
                   <input
                     id="shop_tag"
                     type="text"
-                    required={true}
-                    name="shopName"
+                    name="shopATag"
                     placeholder="أدخل بيانات جديدة"
                     onChange={handleChange}
                     value={values.name}
