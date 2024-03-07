@@ -4,7 +4,16 @@ import React from "react";
 import upload from "../../assets/images/upload-ico.svg";
 import upload2 from "../../assets/images/upload2.png";
 
-const CropImage = ({ image, setImage, id, name, label, profile }) => {
+const CropImage = ({
+  image,
+  setImage,
+  id,
+  name,
+  label,
+  profile,
+  handleChange,
+  values,
+}) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
 
@@ -12,6 +21,7 @@ const CropImage = ({ image, setImage, id, name, label, profile }) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         setImage(e.target.result);
+        handleChange(e.target.result);
       };
       reader.readAsDataURL(file);
     }
@@ -27,7 +37,10 @@ const CropImage = ({ image, setImage, id, name, label, profile }) => {
           id={id}
           name={name}
           className="w-full hidden"
-          onChange={(e) => handleImageChange(e)}
+          value={values.name}
+          onChange={(e) => {
+            handleImageChange(e);
+          }}
         />
         <ErrorMessage name={name} component="div" />
         <p className="text-base ">{label}</p>

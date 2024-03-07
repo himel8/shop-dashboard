@@ -49,8 +49,9 @@ const Step1 = ({ values, handleChange }) => {
   const [licenceImage, setLicenceImage] = useState(null);
 
   const handleNextClick = (value) => {
+    console.log(value);
     setCategory(value);
-    if (!category) {
+    if ((value = "")) {
       toast.error("Please select a category.");
       return;
     }
@@ -184,7 +185,10 @@ const Step1 = ({ values, handleChange }) => {
           placeholder="Enter Shop Alias"
           name="shopAlias"
           values={values}
-          onChange={handleAliasChange}
+          onChange={(e) => {
+            handleChange(e);
+            handleAliasChange(e);
+          }}
         />
 
         <div className="pt-8 w-full">
@@ -205,6 +209,8 @@ const Step1 = ({ values, handleChange }) => {
       <div className="flex justify-between gap-10 sm:gap-5 flex-col sm:flex-row">
         <div className="w-full">
           <CropImage
+            values={values}
+            handleChange={handleChange}
             image={frontImage}
             label="Emirates Id (Front)"
             setImage={setFrontImage}
@@ -232,6 +238,8 @@ const Step1 = ({ values, handleChange }) => {
         </div>
         <div className="w-full">
           <CropImage
+            values={values}
+            handleChange={handleChange}
             image={backImage}
             label="Emirates Id (Back)"
             setImage={setBackImage}
@@ -274,6 +282,8 @@ const Step1 = ({ values, handleChange }) => {
 
       <FromTitle>Add Your Shop Logo</FromTitle>
       <CropImage
+        values={values}
+        handleChange={handleChange}
         image={logoImage}
         label="Add your shop logo "
         setImage={setLogoImage}
